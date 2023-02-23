@@ -11,7 +11,7 @@ class Base {
     try {
       final response = await http.get(Uri.parse(url), headers: header);
       responseJson = json.decode(response.body.toString());
-    } on SocketException  {
+    } on SocketException {
       throw Exception("No Internet Connection");
     } on TimeoutException {
       throw Exception("Request Time out!!");
@@ -34,11 +34,11 @@ class Base {
           ? await http.post(Uri.parse(url), headers: header, body: body)
           : await http.put(Uri.parse(url), headers: header, body: body);
       responseJson = json.decode(response.body.toString());
-    } on SocketException  {
+    } on SocketException {
       throw Exception("No Internet Connection");
     } on TimeoutException {
       throw Exception("Request Time out!!");
-    } on HttpException  {
+    } on HttpException {
       throw Exception("$url not found");
     } on FormatException catch (e) {
       throw Exception(e.message);
